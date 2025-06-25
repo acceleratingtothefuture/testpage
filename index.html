@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Imperial County DA · Data Dashboards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <!-- Google-fonts bundle -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Lato:wght@300;400;700&family=Red+Hat+Text:wght@400;600&family=Noto+Serif:wght@400;600&family=DM+Serif+Text&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+  <!-- local styles -->
+  <link rel="stylesheet" href="style.css" />
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- sticky top bar -->
+  <nav class="navbar">
+    <div class="container nav-flex">
+      <div class="logo-block">
+        <span class="logo-main">Imperial&nbsp;County&nbsp;District&nbsp;Attorney’s&nbsp;Office</span>
+        <span class="logo-sub">George&nbsp;Marquez,&nbsp;District&nbsp;Attorney</span>
+      </div>
+      <img src="header-badge.png" alt="County seal" class="nav-img">
+    </div>
+  </nav>
+
+  <!-- hero -->
+  <header class="hero">
+    <div class="container hero-content">
+      <h1>Data Dashboards</h1>
+      <p>Data Transparency &amp; Data-Driven Decision-Making</p>
+    </div>
+  </header>
+
+  <!-- quick links -->
+  <section class="links-grid container">
+    <a href="#incidents" class="card btn-link">Arrests &amp; Prosecutions</a>
+    <a href="#actions"   class="card btn-link">DA Actions on Arrests</a>
+    <a href="#numbers"   class="card btn-link">By the Numbers</a>
+  </section>
+
+  <!-- arrests & prosecutions -->
+  <section id="incidents" class="dashboard-section">
+    <div class="container">
+      <h2 class="section-title">Arrests &amp; Prosecutions</h2>
+
+      <div class="dashboard-wrapper">
+        <div class="chart-card"><canvas id="incidentsChart"></canvas></div>
+
+        <div class="controls-card">
+          <h3>Filters</h3>
+          <label>Date&nbsp;(Year)
+            <input type="range" id="yearRange" min="2011" max="2025" value="2011">
+            <span id="yearDisplay">2011</span>
+          </label>
+          <label>Crime Type
+            <select id="incidentType">
+              <option>Violent</option>
+              <option>Non-Violent</option>
+            </select>
+          </label>
+        </div>
+      </div>
+
+      <button class="info-btn" data-target="incInfo">More information</button>
+      <div id="incInfo" class="info-box">
+        Arrest numbers come from local law-enforcement logs. Prosecution counts show charges filed by the DA in the same calendar year.
+      </div>
+    </div>
+  </section>
+
+  <!-- DA actions on arrests -->
+  <section id="actions" class="dashboard-section">
+    <div class="container">
+      <h2 class="section-title">DA Actions on Arrests</h2>
+
+      <div class="dashboard-wrapper">
+        <div class="chart-card"><canvas id="actionsPie1"></canvas></div>
+        <div class="chart-card"><canvas id="actionsPie2"></canvas></div>
+      </div>
+
+      <div class="controls-card" style="max-width:320px;margin:2rem auto 0">
+        <label>Date&nbsp;(Year)
+          <input type="range" id="actionsYearRange" min="2011" max="2025" value="2011">
+          <span id="actionsYearDisplay">2011</span>
+        </label>
+      </div>
+
+      <button class="info-btn" data-target="actionsInfo">More information</button>
+      <div id="actionsInfo" class="info-box">
+        Severity splits follow California Penal Code. Outcome slices reflect each defendant’s final court disposition in the selected year.
+      </div>
+    </div>
+  </section>
+
+  <!-- by the numbers -->
+  <section id="numbers" class="dashboard-section">
+    <div class="container">
+      <h2 class="section-title">By the Numbers</h2>
+
+      <div class="stats-grid">
+        <div class="stat-card"><span class="stat-value">547</span><span class="stat-label">convictions last year</span></div>
+        <div class="stat-card"><span class="stat-value">53</span><span class="stat-label">violent-crime convictions</span></div>
+        <div class="stat-card"><span class="stat-value">282</span><span class="stat-label">days from arrest to close</span></div>
+        <div class="stat-card"><span class="stat-value">92&nbsp;%</span><span class="stat-label">overall conviction rate</span></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>© <span id="yearNow"></span> Imperial County District Attorney’s Office</p>
+  </footer>
+
+  <!-- one single reference to the real JS file -->
+  <script src="script.js"></script>
+</body>
+</html>
