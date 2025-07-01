@@ -14,30 +14,44 @@ body{font-family:'Lato',sans-serif;}
 :root{
   --primary:#6c8dff;
   --primary-dark:#1b1f3b;
-  --bg:#11141d;
+  --bg:#11141d; /*dark main background */ 
   --panel:#1c2130;
   --text:#e9ecff;
-  --subtext:#b7bcce;
-  --shadow:0 4px 16px rgba(0,0,0,0.6);
+  --subtext:#b7bcce; /*slightly darker text in description */ 
+  --shadow:0 4px 16px hsla(0, 0%, 0%, 0.6); /*low hanging shadow for nav bar */ 
 }
 
 /* ---------- base ---------- */
-html,body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;}
-.container{width:90%;max-width:1200px;margin:0 auto;}   /* keeps rest of layout centered */
+html, body{
+  margin:0; /* removes any default margin, cover entire page */ 
+  background:var(--bg); /* dark background of web page */ 
+  color:var(--text); /*light color body text */ 
+  line-height:1.5;
+}
+
+.container{
+  width:90%;
+  max-width:1200px
+  ;margin:0 auto;
+}   /* keeps rest of layout centered */
 
 /* ---------- sticky nav ---------- */
 .navbar{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  height:120px;                                /* bigger bar */
+  position:sticky; /* scrolls as you scroll */ 
+  top: 0; /* keeps nav bar at very top of page as you scroll */ 
+  z-index:1000; /* makes sure nav bar is on top of all else higher z index higher up */ 
+  height:120px;                                /* thick bar */ 
   background:var(--primary-dark);
   box-shadow:var(--shadow);
 }
-.navbar .container{width:100%;max-width:none;} /* make nav stretch full width */
+
+.navbar .container{
+width:100%;
+max-width:none;
+} /* make nav cover whole page */
 
 .nav-flex{
-  display:flex;
+  display:flex; /*allows dynamic spacing tools but sets rows by default, will override below */ 
   align-items:center;
   justify-content:space-between;
   height:100%;
@@ -46,13 +60,13 @@ html,body{margin:0;background:var(--bg);color:var(--text);line-height:1.5;}
 
 /* logo block flush-left */
 .logo-block{
-  display:flex;
-  flex-direction:column;
+  display:flex; /* gives access to dynamic tools like margin right */ 
+  flex-direction:column; /*override row flex direction done in nav-flex by display: flex */ 
   line-height:1.1;
   margin-right:auto;                           /* forces image to far right */
 }
 .logo-main{
-  font-size:2.4rem;                            /* larger text */
+  font-size:2.4rem;                            /* big text for logo */
   font-weight:400;
   color:var(--text);
   white-space:nowrap;
