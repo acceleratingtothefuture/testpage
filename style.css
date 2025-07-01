@@ -30,10 +30,10 @@ html, body{
 }
 
 .container{
-  width:90%;
+  width:90%; /* stops text from being pushed too far to the sides, takes up 90% but not 100% */ 
   max-width:1200px
   ;margin:0 auto;
-}   /* keeps rest of layout centered */
+}   /* keeps layout centered */
 
 /* ---------- sticky nav ---------- */
 .navbar{
@@ -41,19 +41,20 @@ html, body{
   top: 0; /* keeps nav bar at very top of page as you scroll */ 
   z-index:1000; /* makes sure nav bar is on top of all else higher z index higher up */ 
   height:120px;                                /* thick bar */ 
-  background:var(--primary-dark);
-  box-shadow:var(--shadow);
+  background:var(--primary-dark); /* darker navbar color */ 
+  box-shadow:var(--shadow); /* deep lower shadow */ 
 }
 
 .navbar .container{
 width:100%;
 max-width:none;
-} /* make nav cover whole page */
+} /* make nav cover whole page, overrides normal container that's only 90% */
 
+/* text and image of navbar */ 
 .nav-flex{
   display:flex; /*allows dynamic spacing tools but sets rows by default, will override below */ 
-  align-items:center;
-  justify-content:space-between;
+  align-items:center; /* moves stuff inside nav bar to vertical middle, FYI: justify content is horizontal */ 
+  /* justify-content:space-between; */ /* possibly redundant line? */ 
   height:100%;
   padding:0 1.25rem;
 }
@@ -63,50 +64,60 @@ max-width:none;
   display:flex; /* gives access to dynamic tools like margin right */ 
   flex-direction:column; /*override row flex direction done in nav-flex by display: flex */ 
   line-height:1.1;
-  margin-right:auto;                           /* forces image to far right */
+  margin-right:auto;  /* pushes logo, which is on same line because of flex display, to far right */ 
 }
 .logo-main{
-  font-size:2.4rem;                            /* big text for logo */
-  font-weight:400;
-  color:var(--text);
-  white-space:nowrap;
+  font-size:2.4rem;    /* big text for Imperial County DA */
+  font-weight: 400;  /* possibly redundant line, deleting it doesn't change anything */
+  color:var(--text); /*basically white */ 
+  white-space:nowrap; /* possibly redundant keep it all on one line, no stacking */ 
 }
+
+/* DA's name */ 
 .logo-sub{
-  font-size:1.1rem;
-  font-weight:400;
-  color:var(--subtext);
-  margin-top:.15rem;
+  font-size:1.5rem; /* a bit smaller than the main title */ 
+  font-weight:400; /* possibly redundant no difference */ 
+  color:var(--subtext); /* a bit grey */ 
+  margin-top:.15rem; /* some space below the main title */
 }
 
 /* badge image enlarged proportionally */
 .nav-img{
-  height:140px;                                /* scales with bar */
-  width:auto;
-  object-fit:contain;
-  margin-top:-10px;
+  height:140px;         /* need to check out the hardcoded px for mobile */
+  width:auto;        /* logo is perfect circle, preserve shape as height changes */ 
+  object-fit:contain; /* possible redundant line */ 
+  margin-top:-10px; /* a bit from the top and bottom etc. */ 
   margin-bottom:-10px;
+  margin-right: 20px; /* not all the way to the right */ 
 }
 
 /* ---------- hero ---------- */
 .hero{
-  background:linear-gradient(135deg,#1b1f3b 0%,#223165 100%);
-  text-align:center;
-  padding:4rem 0 3rem;
+  background:linear-gradient(135deg,#1b1f3b 0%,#223165 100%); /* nice gradient */
+  text-align:center; 
+  padding:4rem 0 3.5rem; /* a bit lower from the top */
 }
 .hero h1{
   font-size:3.75rem;
-  font-weight:600;
+  font-weight:600; /* font weight seems to be doing nothing */
   color:#fff;
-  margin:0 0 .65rem;
+  margin:0 0 0.65rem; /* some space above the subtitle */
 }
-.hero p{font-size:1.25rem;opacity:.8;color:#dfe3f7;margin:0;}
+.hero p{
+  font-size:1.25rem;
+  opacity:.8; 
+  color:#dfe3f7;
+  margin:0;
+}
 
+/* grid rabbit hole vs. flexbox future fullstack */ 
 /* ---------- quick links ---------- */
 .links-grid{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
-  gap:1.25rem;
-  margin-top:-2.5rem;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); /* ??? */ 
+  gap:1.25rem; /* space between each link */ 
+  margin-top:-2.5rem; /* goes up into top rather than down from top */ 
+  font-size: 1.3rem;
 }
 .btn-link{
   background:var(--panel);
@@ -123,8 +134,14 @@ max-width:none;
 .btn-link:hover{transform:translateY(-4px);background:#2b3046;}
 
 /* ---------- sections ---------- */
-.dashboard-section{padding:3.5rem 0;}
-.section-title{font-size:2.6rem;margin:0 0 1.75rem;color:#fff;}
+.dashboard-section{
+  padding:3.5rem 0;
+}
+.section-title{
+  font-size:2.6rem;
+  margin:0 0 1.75rem;
+  color:#fff;
+}
 .dashboard-wrapper{display:flex;flex-wrap:wrap;gap:2rem;}
 
 /* ---------- cards ---------- */
